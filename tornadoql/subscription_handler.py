@@ -7,7 +7,7 @@ from graphql import graphql, format_error
 from tornado import websocket
 from tornado.escape import json_decode, json_encode
 from tornado.log import app_log
-from rx import Observer, Observable
+from rx.core import Observer, Observable
 
 
 GRAPHQL_WS = 'graphql-ws'

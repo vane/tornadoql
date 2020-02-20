@@ -18,19 +18,27 @@ SETTINGS = {
 
 
 class GraphQLHandler(GQLHandler):
+    def initialize(self, schema=None):
+        self._schema = schema
+
     @property
     def schema(self):
+        if self._schema is not None:
+            return self._schema
         return TornadoQL.schema
 
 
 class GraphQLSubscriptionHandler(GQLSubscriptionHandler):
 
-    def initialize(self, opts):
+    def initialize(self, opts, schema=None):
         super(GraphQLSubscriptionHandler, self).initialize()
         self.opts = opts
+        self._schema = schema
 
     @property
     def schema(self):
+        if self._schema is not None:
+            return self._schema
         return TornadoQL.schema
 
     @property
